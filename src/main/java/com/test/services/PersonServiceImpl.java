@@ -1,5 +1,7 @@
-package com.test;
+package com.test.services;
 
+import com.test.model.Address;
+import com.test.model.Person;
 import com.transport.lib.zeromq.ApiServer;
 
 import java.util.ArrayList;

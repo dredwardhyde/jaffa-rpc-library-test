@@ -1,4 +1,4 @@
-package com.test;
+package com.test.services;
 
 import com.transport.lib.zeromq.ApiServer;
 

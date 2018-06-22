@@ -1,4 +1,4 @@
-package com.test;
+package com.test.model;
 
 public class Person {
     private int id;

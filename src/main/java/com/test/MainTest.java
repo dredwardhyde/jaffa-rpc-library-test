@@ -1,5 +1,8 @@
 package com.test;
 
+import com.test.model.Person;
+import com.test.services.ClientServiceTransport;
+import com.test.services.PersonServiceTransport;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class MainTest {
