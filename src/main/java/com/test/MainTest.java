@@ -30,5 +30,6 @@ public class MainTest {
 
         clientServiceTransport.lol3("test3").onModule("main.server").execute();
         clientServiceTransport.lol4("test4").onModule("main.server").execute();
+        System.exit(0);
     }
 }
