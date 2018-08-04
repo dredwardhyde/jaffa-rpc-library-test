@@ -8,7 +8,7 @@ import com.transport.lib.zeromq.Api;
 public interface PersonService {
 
     public static final String FUCK = "FUCK";
-    public int add(String name, String email, Address address);
+    public int add(String name,  String email, Address address);
     public Person get(Integer id);
     public void lol();
     public void lol2(String message);
@@ -16,5 +16,6 @@ public interface PersonService {
         System.out.println("Shit");
     }
     public String getName();
+    public String testError();
 
 }
