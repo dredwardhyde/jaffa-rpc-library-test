@@ -1,6 +1,7 @@
 package com.test.services;
 
-import com.transport.lib.zeromq.ApiServer;
+
+import com.transport.lib.common.ApiServer;
 
 @ApiServer
 public class ClientServiceImpl implements ClientService {

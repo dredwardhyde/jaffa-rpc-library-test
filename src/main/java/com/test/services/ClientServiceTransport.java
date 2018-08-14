@@ -1,7 +1,8 @@
 package com.test.services;
 
-import com.transport.lib.zeromq.ApiClient;
-import com.transport.lib.zeromq.RequestInterface;
+
+import com.transport.lib.common.ApiClient;
+import com.transport.lib.common.RequestInterface;
 
 @ApiClient
 public interface ClientServiceTransport {

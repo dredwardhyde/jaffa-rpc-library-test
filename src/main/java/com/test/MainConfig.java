@@ -1,6 +1,6 @@
 package com.test;
 
-import com.transport.lib.zeromq.TransportConfig;
+import com.transport.lib.common.TransportConfig;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;

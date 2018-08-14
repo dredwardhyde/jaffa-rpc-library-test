@@ -1,6 +1,7 @@
 package com.test.services;
 
-import com.transport.lib.zeromq.Api;
+
+import com.transport.lib.common.Api;
 
 @Api
 public interface ClientService {

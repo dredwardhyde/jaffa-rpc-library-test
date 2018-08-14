@@ -2,7 +2,7 @@ package com.test.services;
 
 import com.test.model.Address;
 import com.test.model.Person;
-import com.transport.lib.zeromq.Api;
+import com.transport.lib.common.Api;
 
 @Api
 public interface PersonService {

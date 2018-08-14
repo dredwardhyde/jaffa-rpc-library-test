@@ -2,8 +2,8 @@ package com.test.services;
 
 import com.test.model.Address;
 import com.test.model.Person;
-import com.transport.lib.zeromq.ApiClient;
-import com.transport.lib.zeromq.RequestInterface;
+import com.transport.lib.common.ApiClient;
+import com.transport.lib.common.RequestInterface;
 
 @ApiClient
 public interface PersonServiceTransport {

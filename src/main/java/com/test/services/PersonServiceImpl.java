@@ -2,7 +2,7 @@ package com.test.services;
 
 import com.test.model.Address;
 import com.test.model.Person;
-import com.transport.lib.zeromq.ApiServer;
+import com.transport.lib.common.ApiServer;
 
 import java.util.ArrayList;
 import java.util.List;

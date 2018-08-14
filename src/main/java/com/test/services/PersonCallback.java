@@ -1,7 +1,7 @@
 package com.test.services;
 
 import com.test.model.Person;
-import com.transport.lib.zeromq.Callback;
+import com.transport.lib.common.Callback;
 
 public class PersonCallback implements Callback<Person> {
 

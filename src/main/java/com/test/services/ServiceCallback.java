@@ -1,6 +1,7 @@
 package com.test.services;
 
-import com.transport.lib.zeromq.Callback;
+
+import com.transport.lib.common.Callback;
 
 public class ServiceCallback implements Callback<Void> {
 
