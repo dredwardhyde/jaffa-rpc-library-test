@@ -5,7 +5,7 @@ import com.test.model.Person;
 import com.transport.lib.common.ApiClient;
 import com.transport.lib.common.RequestInterface;
 
-@ApiClient
+@ApiClient(TicketProviderImpl.class)
 public interface PersonServiceTransport {
 
     public RequestInterface<Integer> add(String name, String email, Address address);

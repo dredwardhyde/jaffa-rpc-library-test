@@ -5,11 +5,16 @@ import com.test.services.ClientServiceTransport;
 import com.test.services.PersonCallback;
 import com.test.services.PersonServiceTransport;
 import com.test.services.ServiceCallback;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.UUID;
 
 public class MainTest {
+
+    private static Logger logger = LoggerFactory.getLogger(MainTest.class);
+
     public static void main(String[] args){
         System.setProperty("zookeeper.connection", "localhost:2181");
         System.setProperty("service.root", "com.test");
@@ -28,13 +33,12 @@ public class MainTest {
 
         Runnable runnable = () -> {
             Integer id = personService.add("James Carr", "james@zapier.com", null).withTimeout(15_000).onModule("main.server").executeSync();
-            System.out.printf("Resulting id is %s", id);
-            System.out.println();
+            logger.info("Resulting id is " + id);
             Person person = personService.get(id).onModule("main.server").executeSync();
-            System.out.println(person);
+            logger.info(person.toString());
             personService.lol().executeSync();
             personService.lol2("kek").executeSync();
-            System.out.println("Name: " + personService.getName().executeSync());
+            logger.info("Name: " + personService.getName().executeSync());
             clientService.lol3("test3").onModule("main.server").executeSync();
             clientService.lol4("test4").onModule("main.server").executeSync();
             clientService.lol4("test4").onModule("main.server").executeAsync(UUID.randomUUID().toString(), ServiceCallback.class);
@@ -43,8 +47,7 @@ public class MainTest {
             try {
                 personService.testError().onModule("main.server").executeSync();
             } catch (Exception e) {
-                System.out.println("Exception during sync call");
-                e.printStackTrace();
+                logger.error("Exception during sync call:", e);
             }
             personService.testError().onModule("main.server").executeAsync(UUID.randomUUID().toString(), PersonCallback.class);
         };
