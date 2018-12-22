@@ -9,11 +9,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class MainTest {
 
     private static Logger logger = LoggerFactory.getLogger(MainTest.class);
+
+    private static final int CONCURRENCY_LEVEL = 6;
 
     public static void main(String[] args){
         System.setProperty("zookeeper.connection", "localhost:2181");
@@ -23,6 +27,8 @@ public class MainTest {
         System.setProperty("use.kafka.for.async", "true");
         System.setProperty("use.kafka.for.sync", "true");
         System.setProperty("bootstrap.servers", "localhost:9091,localhost:9092,localhost:9093");
+
+        List<Thread> threadList = new ArrayList<>();
 
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
         ctx.register(MainConfig.class);
@@ -52,21 +58,16 @@ public class MainTest {
             personService.testError().onModule("main.server").executeAsync(UUID.randomUUID().toString(), PersonCallback.class);
         };
 
-        Thread thread1 = new Thread(runnable);
-        Thread thread2 = new Thread(runnable);
-        Thread thread3 = new Thread(runnable);
+        for(int i = 0; i < CONCURRENCY_LEVEL; i++){ threadList.add(new Thread(runnable)); }
 
-        thread1.start();
-        thread2.start();
-        thread3.start();
+        threadList.forEach(Thread::start);
 
         try{
-            thread1.join();
-            thread2.join();
-            thread3.join();
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
+            threadList.forEach(thread -> {try{thread.join();} catch (Exception e){e.printStackTrace();}});
+            Thread.sleep(1000);
+        }catch (Exception ignore) { }
+
+        ctx.close();
 
         System.exit(0);
     }
