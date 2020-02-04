@@ -11,8 +11,8 @@ public class PersonCallback implements Callback<Person> {
 
     @Override
     public void callBack(String key, Person result) {
-        logger.info("Key: " + key);
-        logger.info("Result: " + result);
+        logger.info("Key: {}", key);
+        logger.info("Result: {}", result);
     }
 
     @Override

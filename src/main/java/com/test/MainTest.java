@@ -39,12 +39,13 @@ public class MainTest {
 
         Runnable runnable = () -> {
             Integer id = personService.add("James Carr", "james@zapier.com", null).withTimeout(15_000).onModule("main.server").executeSync();
-            logger.info("Resulting id is " + id);
+            logger.info("Resulting id is {}", id);
             Person person = personService.get(id).onModule("main.server").executeSync();
-            logger.info(person.toString());
+            logger.info(String.valueOf(person));
             personService.lol().executeSync();
             personService.lol2("kek").executeSync();
-            logger.info("Name: " + personService.getName().executeSync());
+            String personName = personService.getName().executeSync();
+            logger.info("Name: {}", personName);
             clientService.lol3("test3").onModule("main.server").executeSync();
             clientService.lol4("test4").onModule("main.server").executeSync();
             clientService.lol4("test4").onModule("main.server").executeAsync(UUID.randomUUID().toString(), ServiceCallback.class);
@@ -63,7 +64,7 @@ public class MainTest {
         threadList.forEach(Thread::start);
 
         try{
-            threadList.forEach(thread -> {try{thread.join();} catch (Exception e){e.printStackTrace();}});
+            threadList.forEach(thread -> {try{thread.join();} catch (Exception e){logger.error("Error occurred while stopping threads", e);}});
             Thread.sleep(1000);
         }catch (Exception ignore) { }
 

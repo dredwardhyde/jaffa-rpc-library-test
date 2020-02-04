@@ -10,8 +10,8 @@ public class ServiceCallback implements Callback<Void> {
 
     @Override
     public void callBack(String key, Void result) {
-        logger.info("Key: " + key);
-        logger.info("Result: " + result);
+        logger.info("Key: {}", key);
+        logger.info("Result: {}", result);
     }
 
     @Override
