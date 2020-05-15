@@ -1,9 +1,9 @@
 package com.test;
 
 import com.test.model.Person;
-import com.test.services.ClientServiceTransport;
+import com.test.services.ClientServiceClient;
 import com.test.services.PersonCallback;
-import com.test.services.PersonServiceTransport;
+import com.test.services.PersonServiceClient;
 import com.test.services.ServiceCallback;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,13 +20,7 @@ public class MainTest {
     private static final int CONCURRENCY_LEVEL = 6;
 
     public static void main(String[] args){
-        System.setProperty("zookeeper.connection", "localhost:2181");
-        System.setProperty("service.root", "com.test");
-        System.setProperty("service.port", "4242");
-        System.setProperty("module.id", "main.server");
-        System.setProperty("use.kafka.for.async", "true");
-        System.setProperty("use.kafka.for.sync", "true");
-        System.setProperty("bootstrap.servers", "localhost:9091,localhost:9092,localhost:9093");
+        System.setProperty("jaffa-rpc-config", "./jaffa-rpc-config-test-server.properties");
 
         List<Thread> threadList = new ArrayList<>();
 
@@ -34,8 +28,8 @@ public class MainTest {
         ctx.register(MainConfig.class);
         ctx.refresh();
 
-        ClientServiceTransport clientService = ctx.getBean(ClientServiceTransport.class);
-        PersonServiceTransport personService = ctx.getBean(PersonServiceTransport.class);
+        ClientServiceClient clientService = ctx.getBean(ClientServiceClient.class);
+        PersonServiceClient personService = ctx.getBean(PersonServiceClient.class);
 
         Runnable runnable = () -> {
             Integer id = personService.add("James Carr", "james@zapier.com", null).withTimeout(15_000).onModule("main.server").executeSync();

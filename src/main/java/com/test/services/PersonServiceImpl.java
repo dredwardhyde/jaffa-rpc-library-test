@@ -1,28 +1,28 @@
 package com.test.services;
 
+import com.jaffa.rpc.lib.annotations.ApiServer;
+import com.jaffa.rpc.lib.entities.RequestContext;
 import com.test.model.Address;
 import com.test.model.Person;
-import com.transport.lib.common.ApiServer;
-import com.transport.lib.common.TransportContext;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @ApiServer
+@Slf4j
+@Component
 public class PersonServiceImpl implements PersonService{
-
-    private static Logger logger = LoggerFactory.getLogger(PersonServiceImpl.class);
 
     private List<Person> people = new ArrayList<>();
 
     private AtomicInteger idProvider = new AtomicInteger(1);
 
     private void logMeta() {
-        logger.info("SOURCE MODULE ID: {} MY MODULE ID: {}", TransportContext.getSourceModuleId(), System.getProperty("module.id"));
-        logger.info("TICKET: {}", TransportContext.getTicket());
+        log.info("SOURCE MODULE ID: {} MY MODULE ID: {}", RequestContext.getSourceModuleId(), System.getProperty("jaffa.rpc.module.id"));
+        log.info("TICKET: {}", RequestContext.getTicket());
     }
 
     public int add(String name, String email, Address address) {
@@ -48,11 +48,11 @@ public class PersonServiceImpl implements PersonService{
 
     public void lol(){
         logMeta();
-        logger.info("Lol");
+        log.info("Lol");
     }
 
     public void lol2(String message){
-        logger.info(message);
+        log.info(message);
     }
 
     public String getName(){
@@ -60,6 +60,6 @@ public class PersonServiceImpl implements PersonService{
     }
 
     public String testError(){
-        throw new RuntimeException("very bad in " + System.getProperty("module.id"));
+        throw new RuntimeException("very bad in " + System.getProperty("jaffa.rpc.module.id"));
     }
 }

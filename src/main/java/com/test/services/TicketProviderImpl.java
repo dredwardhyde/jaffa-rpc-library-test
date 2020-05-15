@@ -1,7 +1,7 @@
 package com.test.services;
 
-import com.transport.lib.common.SecurityTicket;
-import com.transport.lib.common.TicketProvider;
+import com.jaffa.rpc.lib.security.SecurityTicket;
+import com.jaffa.rpc.lib.security.TicketProvider;
 import org.springframework.stereotype.Component;
 
 import java.util.UUID;

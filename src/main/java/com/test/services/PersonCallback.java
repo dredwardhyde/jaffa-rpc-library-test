@@ -1,22 +1,22 @@
 package com.test.services;
 
+import com.jaffa.rpc.lib.callbacks.Callback;
 import com.test.model.Person;
-import com.transport.lib.common.Callback;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 
+@Slf4j
+@Component
 public class PersonCallback implements Callback<Person> {
 
-    private static Logger logger = LoggerFactory.getLogger(PersonCallback.class);
-
     @Override
-    public void callBack(String key, Person result) {
-        logger.info("Key: {}", key);
-        logger.info("Result: {}", result);
+    public void onSuccess(String key, Person result) {
+        log.info("Key: {}", key);
+        log.info("Result: {}", result);
     }
 
     @Override
-    public void callBackError(String key, Throwable exception) {
-        logger.error("Exception during async call:", exception);
+    public void onError(String key, Throwable exception) {
+        log.error("Exception during async call:", exception);
     }
 }

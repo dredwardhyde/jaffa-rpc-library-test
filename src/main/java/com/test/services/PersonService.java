@@ -1,21 +1,20 @@
 package com.test.services;
 
+import com.jaffa.rpc.lib.annotations.Api;
 import com.test.model.Address;
 import com.test.model.Person;
-import com.transport.lib.common.Api;
 
 @Api
 public interface PersonService {
 
-    public static final String FUCK = "FUCK";
-    public int add(String name,  String email, Address address);
-    public Person get(Integer id);
-    public void lol();
-    public void lol2(String message);
-    public static void shit(){
-        System.out.println("Shit");
+    String TEST = "TEST";
+    int add(String name, String email, Address address);
+    Person get(Integer id);
+    void lol();
+    void lol2(String message);
+    static void test(){
+        System.out.println("Test");
     }
-    public String getName();
-    public String testError();
-
+    String getName();
+    Person testError();
 }

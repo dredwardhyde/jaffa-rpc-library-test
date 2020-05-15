@@ -1,10 +1,9 @@
 package com.test.services;
 
-
-import com.transport.lib.common.Api;
+import com.jaffa.rpc.lib.annotations.Api;
 
 @Api
 public interface ClientService {
-    public void lol3(String message);
-    public void lol4(String message);
+    void lol3(String message);
+    void lol4(String message);
 }
