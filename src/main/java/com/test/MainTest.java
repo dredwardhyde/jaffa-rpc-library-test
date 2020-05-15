@@ -67,7 +67,7 @@ public class MainTest {
                     .executeAsync(UUID.randomUUID().toString(), PersonCallback.class);
         };
 
-        for(int i = 0; i < CONCURRENCY_LEVEL; i++) executor.execute(runnable);
+        for (int i = 0; i < CONCURRENCY_LEVEL; i++) executor.execute(runnable);
         executor.awaitTermination(1, TimeUnit.MINUTES);
         executor.shutdown();
         ctx.close();
