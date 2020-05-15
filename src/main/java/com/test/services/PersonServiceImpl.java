@@ -59,7 +59,7 @@ public class PersonServiceImpl implements PersonService{
         return null;
     }
 
-    public String testError(){
+    public Person testError(){
         throw new RuntimeException("very bad in " + System.getProperty("jaffa.rpc.module.id"));
     }
 }
