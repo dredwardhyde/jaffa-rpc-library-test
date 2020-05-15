@@ -8,13 +8,20 @@ import com.test.model.Person;
 public interface PersonService {
 
     String TEST = "TEST";
-    int add(String name, String email, Address address);
-    Person get(Integer id);
-    void lol();
-    void lol2(String message);
-    static void test(){
+
+    static void test() {
         System.out.println("Test");
     }
+
+    int add(String name, String email, Address address);
+
+    Person get(Integer id);
+
+    void lol();
+
+    void lol2(String message);
+
     String getName();
+
     Person testError();
 }

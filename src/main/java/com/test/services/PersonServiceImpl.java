@@ -14,11 +14,11 @@ import java.util.concurrent.atomic.AtomicInteger;
 @ApiServer
 @Slf4j
 @Component
-public class PersonServiceImpl implements PersonService{
+public class PersonServiceImpl implements PersonService {
 
-    private List<Person> people = new ArrayList<>();
+    private final List<Person> people = new ArrayList<>();
 
-    private AtomicInteger idProvider = new AtomicInteger(1);
+    private final AtomicInteger idProvider = new AtomicInteger(1);
 
     private void logMeta() {
         log.info("SOURCE MODULE ID: {} MY MODULE ID: {}", RequestContext.getSourceModuleId(), System.getProperty("jaffa.rpc.module.id"));
@@ -46,20 +46,20 @@ public class PersonServiceImpl implements PersonService{
         return null;
     }
 
-    public void lol(){
+    public void lol() {
         logMeta();
         log.info("Lol");
     }
 
-    public void lol2(String message){
+    public void lol2(String message) {
         log.info(message);
     }
 
-    public String getName(){
+    public String getName() {
         return null;
     }
 
-    public Person testError(){
+    public Person testError() {
         throw new RuntimeException("very bad in " + System.getProperty("jaffa.rpc.module.id"));
     }
 }
