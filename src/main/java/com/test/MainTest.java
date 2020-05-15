@@ -20,7 +20,7 @@ public class MainTest {
     private static final String TARGET_MODULE_ID = "main.server";
 
     public static void main(String[] args) throws InterruptedException {
-        System.setProperty("jaffa-rpc-config", "./jaffa-rpc-config-test-server.properties");
+        System.setProperty("jaffa-rpc-config", "./config.properties");
         ExecutorService executor = Executors.newFixedThreadPool(CONCURRENCY_LEVEL);
 
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
@@ -31,25 +31,40 @@ public class MainTest {
         PersonServiceClient personService = ctx.getBean(PersonServiceClient.class);
 
         Runnable runnable = () -> {
-            Integer id = personService.add("James Carr", "james@zapier.com", null).withTimeout(15_000).onModule(TARGET_MODULE_ID).executeSync();
+            Integer id = personService.add("Test", "test@test.com", null)
+                    .withTimeout(TimeUnit.MILLISECONDS.toMillis(15000))
+                    .onModule(TARGET_MODULE_ID)
+                    .executeSync();
             log.info("Resulting id is {}", id);
-            Person person = personService.get(id).onModule(TARGET_MODULE_ID).executeSync();
+            Person person = personService.get(id)
+                    .onModule(TARGET_MODULE_ID)
+                    .executeSync();
             log.info(String.valueOf(person));
             personService.lol().executeSync();
             personService.lol2("kek").executeSync();
             String personName = personService.getName().executeSync();
             log.info("Name: {}", personName);
-            clientService.lol3("test3").onModule(TARGET_MODULE_ID).executeSync();
-            clientService.lol4("test4").onModule(TARGET_MODULE_ID).executeSync();
-            clientService.lol4("test4").onModule(TARGET_MODULE_ID).executeAsync(UUID.randomUUID().toString(), ServiceCallback.class);
-            personService.get(id).onModule(TARGET_MODULE_ID).executeAsync(UUID.randomUUID().toString(), PersonCallback.class);
+            clientService.lol3("test3")
+                    .onModule(TARGET_MODULE_ID)
+                    .executeSync();
+            clientService.lol4("test4")
+                    .onModule(TARGET_MODULE_ID)
+                    .executeSync();
+            clientService.lol4("test4")
+                    .onModule(TARGET_MODULE_ID)
+                    .executeAsync(UUID.randomUUID().toString(), ServiceCallback.class);
+            personService.get(id)
+                    .onModule(TARGET_MODULE_ID)
+                    .executeAsync(UUID.randomUUID().toString(), PersonCallback.class);
             personService.lol2("kek").executeSync();
             try {
                 personService.testError().onModule(TARGET_MODULE_ID).executeSync();
             } catch (Exception e) {
                 log.error("Exception during sync call:", e);
             }
-            personService.testError().onModule(TARGET_MODULE_ID).executeAsync(UUID.randomUUID().toString(), PersonCallback.class);
+            personService.testError()
+                    .onModule(TARGET_MODULE_ID)
+                    .executeAsync(UUID.randomUUID().toString(), PersonCallback.class);
         };
 
         for(int i = 0; i < CONCURRENCY_LEVEL; i++) executor.execute(runnable);
