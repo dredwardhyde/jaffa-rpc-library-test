@@ -32,7 +32,7 @@ public class MainTest {
 
         Runnable runnable = () -> {
             Integer id = personService.add("Test", "test@test.com", null)
-                    .withTimeout(TimeUnit.MILLISECONDS.toMillis(15000))
+                    .withTimeout(15, TimeUnit.SECONDS)
                     .onModule(TARGET_MODULE_ID)
                     .executeSync();
             log.info("Resulting id is {}", id);
