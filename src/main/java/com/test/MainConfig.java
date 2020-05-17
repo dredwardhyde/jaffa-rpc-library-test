@@ -15,6 +15,7 @@ import org.springframework.context.annotation.Import;
 @Configuration
 @ComponentScan
 @Import(JaffaRpcConfig.class)
+@SuppressWarnings("unused")
 public class MainConfig {
     @Bean
     ServerEndpoints serverEndpoints() {

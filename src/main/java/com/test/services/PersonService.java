@@ -5,6 +5,7 @@ import com.test.model.Address;
 import com.test.model.Person;
 
 @Api
+@SuppressWarnings({"squid:S1845", "squid:S106", "squid:S1214", "unused"})
 public interface PersonService {
 
     String TEST = "TEST";

@@ -14,6 +14,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 @ApiServer
 @Slf4j
 @Component
+@SuppressWarnings("squid:S112")
 public class PersonServiceImpl implements PersonService {
 
     private final List<Person> people = new ArrayList<>();
