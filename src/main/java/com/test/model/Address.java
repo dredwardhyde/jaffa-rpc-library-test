@@ -10,7 +10,6 @@ import java.io.Serializable;
 @Setter
 @ToString
 public class Address implements Serializable {
-
     private String zip;
     private String street;
     private String flat;

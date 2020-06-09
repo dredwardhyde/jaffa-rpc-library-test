@@ -13,5 +13,4 @@ public class Person {
     private String email;
     private String twitter;
     private Address address;
-
 }
