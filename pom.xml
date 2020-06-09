@@ -4,14 +4,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.edwardhyde</groupId>
+    <groupId>com.github.dredwardhyde</groupId>
     <artifactId>jaffa-rpc-library-test</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
 
     <properties>
         <java.version>1.8</java.version>
         <root-path>src/main/java/</root-path>
-        <spring.version>5.2.5.RELEASE</spring.version>
+        <spring.version>5.2.6.RELEASE</spring.version>
         <maven.compiler.plugin.version>3.7.0</maven.compiler.plugin.version>
         <lombok.version>1.18.4</lombok.version>
     </properties>
@@ -33,7 +33,7 @@
             <version>${spring.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.edwardhyde</groupId>
+            <groupId>com.github.dredwardhyde</groupId>
             <artifactId>jaffa-rpc-library</artifactId>
             <version>${project.version}</version>
         </dependency>
@@ -65,7 +65,7 @@
             <build>
                 <plugins>
                     <plugin>
-                        <groupId>com.edwardhyde</groupId>
+                        <groupId>com.github.dredwardhyde</groupId>
                         <artifactId>jaffa-rpc-maven-plugin</artifactId>
                         <version>${project.version}</version>
                         <configuration>
