@@ -11,9 +11,9 @@
     <properties>
         <java.version>1.8</java.version>
         <root-path>src/main/java/</root-path>
-        <spring.version>5.2.6.RELEASE</spring.version>
-        <maven.compiler.plugin.version>3.7.0</maven.compiler.plugin.version>
-        <lombok.version>1.18.4</lombok.version>
+        <spring.version>LATEST</spring.version>
+        <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
+        <lombok.version>LATEST</lombok.version>
     </properties>
 
     <dependencies>
