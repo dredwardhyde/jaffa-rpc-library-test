@@ -1,7 +1,7 @@
 package com.test.services;
 
 import com.jaffa.rpc.lib.annotations.ApiServer;
-import com.jaffa.rpc.lib.entities.RequestContext;
+import com.jaffa.rpc.lib.entities.RequestContextHelper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -11,8 +11,8 @@ import org.springframework.stereotype.Component;
 public class ClientServiceImpl implements ClientService {
 
     private void logMeta() {
-        log.info("SOURCE MODULE ID: {} MY MODULE ID: {}", RequestContext.getSourceModuleId(), System.getProperty("module.id"));
-        log.info("TICKET: {}", RequestContext.getTicket());
+        log.info("SOURCE MODULE ID: {} MY MODULE ID: {}", RequestContextHelper.getSourceModuleId(), System.getProperty("module.id"));
+        log.info("TICKET: {}", RequestContextHelper.getTicket());
     }
 
     @Override

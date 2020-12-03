@@ -1,11 +1,12 @@
 package com.test.services;
 
 import com.jaffa.rpc.lib.annotations.ApiClient;
-import com.jaffa.rpc.lib.request.Request;
 import com.test.model.Address;
 import com.test.model.Person;
+import com.jaffa.rpc.lib.request.Request;
 
-@ApiClient(ticketProvider = TicketProviderImpl.class)
+@ApiClient
+@SuppressWarnings({ "squid:S1845", "squid:S106", "squid:S1214", "unused" })
 public interface PersonServiceClient {
 
     Request<Integer> add(String name, String email, Address address);

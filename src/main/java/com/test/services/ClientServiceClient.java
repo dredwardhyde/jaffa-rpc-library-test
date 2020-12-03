@@ -3,7 +3,8 @@ package com.test.services;
 import com.jaffa.rpc.lib.annotations.ApiClient;
 import com.jaffa.rpc.lib.request.Request;
 
-@ApiClient(ticketProvider = TicketProviderImpl.class)
+@ApiClient
+@SuppressWarnings("unused")
 public interface ClientServiceClient {
 
     Request<Void> lol3(String message);

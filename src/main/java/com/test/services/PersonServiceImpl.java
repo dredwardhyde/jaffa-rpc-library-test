@@ -1,7 +1,7 @@
 package com.test.services;
 
 import com.jaffa.rpc.lib.annotations.ApiServer;
-import com.jaffa.rpc.lib.entities.RequestContext;
+import com.jaffa.rpc.lib.entities.RequestContextHelper;
 import com.test.model.Address;
 import com.test.model.Person;
 import lombok.extern.slf4j.Slf4j;
@@ -22,8 +22,8 @@ public class PersonServiceImpl implements PersonService {
     private final AtomicInteger idProvider = new AtomicInteger(1);
 
     private void logMeta() {
-        log.info("SOURCE MODULE ID: {} MY MODULE ID: {}", RequestContext.getSourceModuleId(), System.getProperty("jaffa.rpc.module.id"));
-        log.info("TICKET: {}", RequestContext.getTicket());
+        log.info("SOURCE MODULE ID: {} MY MODULE ID: {}", RequestContextHelper.getSourceModuleId(), System.getProperty("jaffa.rpc.module.id"));
+        log.info("TICKET: {}", RequestContextHelper.getTicket());
     }
 
     public int add(String name, String email, Address address) {
