@@ -6,7 +6,7 @@
 
     <groupId>com.github.dredwardhyde</groupId>
     <artifactId>jaffa-rpc-library-test</artifactId>
-    <version>1.7</version>
+    <version>1.11</version>
 
     <properties>
         <java.version>1.8</java.version>
